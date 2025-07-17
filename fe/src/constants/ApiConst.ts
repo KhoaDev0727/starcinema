@@ -1,0 +1,16 @@
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+export const LOGIN_ENDPOINT = '/api/login';
+export const REGISTER_ENDPOINT = '/api/register';
+export const VERIFY_REGISTER_CODE_ENDPOINT = '/api/register/verify-code';
+export const RESEND_REGISTER_CODE_ENDPOINT = '/api/register/resend-code';
+export const FORGOT_PASSWORD_ENDPOINT = '/api/password/forgot';
+export const VERIFY_OTP_ENDPOINT = '/api/password/verify';
+export const RESET_PASSWORD_ENDPOINT = '/api/password/reset';
+export const CHANGE_PASSWORD_ENDPOINT = '/api/auth/change-password';
+export const EDIT_PROFILE_ENDPOINT = '/api/auth/edit-profile';
+export const GET_PROFILE_ENDPOINT = '/api/auth/profile';
+export const CHECK_EMAIL_ENDPOINT = '/api/auth/check-email';
+export const CHECK_PHONE_ENDPOINT = '/api/auth/check-phone';
+export const MEMBER_LIST_ENDPOINT = '/api/admin/users';
+export const UPDATE_USER_ENDPOINT = '/api/admin/users';
+export const GOOGLE_LOGIN_URL = `${import.meta.env.VITE_API_BASE_URL}/oauth2/authorization/google`;

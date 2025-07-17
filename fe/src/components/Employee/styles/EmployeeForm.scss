@@ -1,0 +1,182 @@
+@use "sass:color";
+
+$primary: #2563eb;
+$danger: #ef4444;
+$text: #374151;
+
+// Search/filter area (chỉ giữ layout, xóa override)
+.search-filter-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+// Table container (khôi phục lại như cũ)
+.employee-list-form > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  justify-content: space-between;
+}
+
+// Table (đồng bộ)
+.employee-table, table {
+  width: 100%;
+  border-collapse: collapse;
+  th, td {
+    text-align: center;
+    vertical-align: middle;
+    padding: 14px 12px;
+    font-size: 15px;
+  }
+  th {
+    font-weight: bold;
+    background: #fafbfc;
+    color: #222;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  td {
+    border-bottom: 1px solid #eee;
+    background: #fff;
+  }
+}
+
+// Add Employee button (giữ nguyên)
+.add-btn {
+  margin: 0 !important;
+  padding: 0 18px !important;
+  height: 38px !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+// Action buttons (giữ nguyên, đồng bộ hover)
+.btn-edit, .ant-btn.btn-edit {
+  background: #1890ff !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 6px 16px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: all 0.2s !important;
+  box-shadow: none !important;
+}
+.btn-edit:hover, .ant-btn.btn-edit:hover {
+  background: #40a9ff !important;
+  color: #fff !important;
+}
+.btn-edit:active, .ant-btn.btn-edit:active {
+  background: #096dd9 !important;
+}
+
+.btn-delete, .ant-btn.btn-delete {
+  background: #bfbfbf !important;
+  color: #fff !important;
+  border: none !important;
+  padding: 6px 16px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: all 0.2s !important;
+  box-shadow: none !important;
+}
+.btn-delete:hover, .ant-btn.btn-delete:hover {
+  background: #888 !important;
+  color: #fff !important;
+}
+.btn-delete:active, .ant-btn.btn-delete:active {
+  background: #595959 !important;
+}
+
+.btn-view, .ant-btn.btn-view {
+  background: #f5f7fa !important;
+  color: #222 !important;
+  border: 1px solid #bfbfbf !important;
+  padding: 6px 16px !important;
+  border-radius: 8px !important;
+  font-size: 15px !important;
+  cursor: pointer !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px !important;
+  transition: all 0.2s !important;
+  box-shadow: none !important;
+}
+.btn-view:hover, .ant-btn.btn-view:hover {
+  background: #e6f0ff !important;
+  color: #2563eb !important;
+}
+
+// Status (giữ nguyên)
+.status-active {
+  color: #16a34a !important;
+  font-weight: 600;
+}
+.status-inactive {
+  color: #bfbfbf !important;
+  font-weight: 600;
+}
+
+// Email verified (giữ nguyên)
+.email-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+}
+.verified-badge {
+  color: #1890ff;
+  font-weight: bold;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Filter button (giữ nguyên)
+.btn-filter {
+  background: #1890ff !important;
+  color: #fff !important;
+  border: none !important;
+  border-radius: 8px !important;
+  padding: 6px 10px !important;
+  font-size: 18px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: none !important;
+}
+.btn-filter:hover, .btn-filter:active, .btn-filter:focus {
+  background: #1890ff !important;
+  color: #fff !important;
+}
+
+// Header row: search/filter bên trái, nút Add Employee bên phải
+.employee-list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0;
+  padding-top: 24px;
+  padding-bottom: 10px;
+}
+
+// Content container: căn giữa, width giống table, padding lề giống table
+.employee-list-content {
+  width: 96%;
+  margin: 0 auto;
+  max-width: 1300px;
+  padding-left: 16px;
+  padding-right: 16px;
+} 

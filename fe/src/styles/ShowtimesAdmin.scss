@@ -1,0 +1,436 @@
+$primary-color: #1e3a8a; // Deep blue for cinematic feel
+$secondary-color: #ffffff; // White background
+$accent-color: #f59e0b; // Neon amber for highlights
+$text-color: #1f2937; // Darker text for contrast on white
+$border-color: #d1d5db; // Light gray for borders
+$error-color: #ef4444; // Vibrant red for errors
+$success-color: #22c55e; // Green for success
+$hover-color: #3b82f6; // Lighter blue for hover
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 6px 12px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 12px 20px rgba(0, 0, 0, 0.2);
+$border-radius: 8px; // Reduced for smaller buttons
+$transition: all 0.3s ease-in-out;
+
+// Page container
+.showtimes-admin-page-container {
+  min-height: 100vh;
+  overflow: auto;
+  position: relative;
+  padding: 2rem;
+  background: $secondary-color; // White background
+}
+
+// Success message
+.success-message {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  background-color: $success-color;
+  color: #fff;
+  padding: 1rem 2rem; // Reduced padding
+  border-radius: $border-radius;
+  box-shadow: $shadow-lg;
+  z-index: 1001;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: fadeInOut 3s ease-in-out forwards;
+
+  .close-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0.2rem;
+    line-height: 1;
+    transition: $transition;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.7);
+    }
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+  10% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateX(-50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-50%) scale(0.9);
+  }
+}
+
+// Component container
+.showtimes-admin {
+  max-width: 1400px;
+  margin: 0 auto;
+  background-color: $secondary-color; // White background
+  border-radius: $border-radius;
+  box-shadow: $shadow-md;
+  font-family: 'Montserrat', sans-serif;
+  padding: 2rem;
+  border: 1px solid $border-color;
+}
+
+// Title
+.showtimes-admin h2 {
+  font-size: 1.75rem; // Slightly smaller for compactness
+  font-weight: 700;
+  color: $accent-color;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+// Filters section
+.filters {
+  display: flex; // Changed to flex for single row
+  align-items: center;
+  gap: 0.75rem; // Reduced gap
+  margin-bottom: 1.5rem;
+  background: rgba($border-color, 0.2);
+  padding: 1rem;
+  border-radius: $border-radius;
+
+  input, .ant-picker {
+    flex: 1;
+    padding: 0.5rem 0.75rem; // Reduced padding
+    font-size: 0.9rem; // Smaller font
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background-color: #f9fafb;
+    color: $text-color;
+    transition: $transition;
+    min-width: 120px; // Ensure inputs don't get too small
+
+    &:focus {
+      outline: none;
+      border-color: $accent-color;
+      box-shadow: 0 0 0 2px rgba($accent-color, 0.2);
+    }
+
+    &::placeholder {
+      color: #6b7280;
+    }
+  }
+
+  button {
+    padding: 0.5rem 1rem; // Smaller buttons
+    background: linear-gradient(90deg, $primary-color, $hover-color);
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 0.9rem; // Smaller font
+    font-weight: 500;
+    cursor: pointer;
+    transition: $transition;
+    text-transform: uppercase;
+    white-space: nowrap; // Prevent text wrapping
+
+    &:hover {
+      background: linear-gradient(90deg, $hover-color, $primary-color);
+      box-shadow: $shadow-sm;
+    }
+
+    &:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+  }
+
+  .add-button {
+    background: linear-gradient(90deg, $accent-color, #d97706);
+    &:hover {
+      background: linear-gradient(90deg, #d97706, $accent-color);
+    }
+  }
+
+  .refresh-button {
+    background: linear-gradient(90deg, #10b981, #059669);
+    &:hover {
+      background: linear-gradient(90deg, #059669, #10b981);
+    }
+    &:disabled {
+      background: #9ca3af;
+      cursor: not-allowed;
+    }
+  }
+
+  .clear-button, .load-all-button {
+    background: transparent;
+    color: $text-color;
+    border: 1px solid $accent-color; // Thinner border
+    &:hover {
+      background-color: rgba($accent-color, 0.1);
+      color: $accent-color;
+    }
+    &:disabled {
+      background: transparent;
+      color: #9ca3af;
+      border-color: #9ca3af;
+    }
+  }
+}
+
+// Error message
+.error {
+  text-align: center;
+  font-size: 1rem; // Slightly smaller
+  color: $error-color;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  background: rgba($error-color, 0.1);
+  padding: 0.75rem;
+  border-radius: $border-radius;
+}
+
+// Loading message
+.loading-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba($accent-color, 0.1);
+  border-radius: $border-radius;
+  margin: 2rem 0;
+  
+  p {
+    font-size: 1.1rem;
+    color: $accent-color;
+    font-weight: 500;
+  }
+}
+
+// No data message
+.no-data-message {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: rgba($border-color, 0.1);
+  border-radius: $border-radius;
+  margin: 2rem 0;
+  
+  p {
+    font-size: 1.1rem;
+    color: $text-color;
+    margin-bottom: 0.5rem;
+    
+    &.hint {
+      font-size: 0.9rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+  }
+}
+
+// Showtimes table
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-bottom: 2rem;
+  background: $secondary-color; // White background
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  thead {
+    background: linear-gradient(90deg, $primary-color, $hover-color);
+
+    th {
+      padding: 1rem; // Slightly smaller
+      font-size: 0.9rem; // Smaller font
+      font-weight: 600;
+      color: #fff; // White text for contrast
+      text-align: left;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  tbody {
+    tr {
+      transition: $transition;
+      &:hover {
+        background-color: rgba($border-color, 0.3);
+      }
+
+      td {
+        padding: 1rem; // Slightly smaller
+        font-size: 0.9rem; // Smaller font
+        color: $text-color;
+        border-bottom: 1px solid $border-color;
+
+        a, button {
+          padding: 0.4rem 0.8rem; // Smaller buttons
+          border: 1px solid $border-color; // Thinner border
+          border-radius: $border-radius;
+          cursor: pointer;
+          font-size: 0.85rem; // Smaller font
+          transition: $transition;
+          text-decoration: none;
+          margin-right: 0.5rem;
+        }
+
+        a {
+          color: $accent-color;
+          border-color: $accent-color;
+          &:hover {
+            background-color: $accent-color;
+            color: $secondary-color;
+          }
+        }
+
+        button {
+          color: $error-color;
+          border-color: $error-color;
+          &:hover {
+            background-color: $error-color;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Pagination
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem; // Reduced gap
+  margin-top: 1.5rem;
+  padding-bottom: 2rem;
+
+  button {
+    padding: 0.4rem 0.8rem; // Smaller buttons
+    background-color: $secondary-color;
+    color: $text-color;
+    border: 1px solid $accent-color; // Thinner border
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem; // Smaller font
+    transition: $transition;
+
+    &.active {
+      background: linear-gradient(90deg, $accent-color, #d97706);
+      color: $secondary-color;
+      border-color: $accent-color;
+    }
+
+    &:hover:not(:disabled) {
+      background: $accent-color;
+      color: $secondary-color;
+    }
+
+    &:disabled {
+      background-color: #e5e7eb;
+      border-color: #e5e7eb;
+      cursor: not-allowed;
+    }
+  }
+}
+
+// Scroll buttons
+.scroll-buttons {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+
+  .scroll-up,
+  .scroll-down {
+    width: 40px; // Slightly smaller
+    height: 40px; // Slightly smaller
+    background: linear-gradient(90deg, $primary-color, $hover-color);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem; // Smaller font
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadow-md;
+    transition: $transition;
+
+    &:hover {
+      background: linear-gradient(90deg, $hover-color, $primary-color);
+      transform: scale(1.1);
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .showtimes-admin {
+    padding: 1rem;
+  }
+
+  .filters {
+    flex-wrap: nowrap; // Force single row
+    overflow-x: auto; // Allow horizontal scrolling if needed
+    padding: 0.75rem;
+    gap: 0.5rem;
+
+    input, .ant-picker, button {
+      min-width: 100px; // Smaller minimum width
+      font-size: 0.85rem;
+      padding: 0.4rem 0.6rem;
+    }
+  }
+
+  table {
+    font-size: 0.85rem;
+
+    th,
+    td {
+      padding: 0.75rem;
+    }
+  }
+
+  .pagination {
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+
+  .scroll-buttons {
+    bottom: 15px;
+    right: 15px;
+
+    .scroll-up,
+    .scroll-down {
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+    }
+  }
+}
+
+.admin-section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $accent-color;
+  margin-bottom: 24px;
+  letter-spacing: 1px;
+  font-family: 'Montserrat', 'Roboto', Arial, sans-serif;
+}

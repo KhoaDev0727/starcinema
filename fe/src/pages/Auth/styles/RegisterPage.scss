@@ -1,0 +1,290 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  background-color: #fff4ec !important;
+  font-family: 'Roboto', sans-serif;
+}
+
+.login-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #fff4ec;
+  padding: 20px;
+  margin: 0 !important;
+}
+
+// ========== VERIFY OVERLAY ==========
+
+.verify-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.verify-modal {
+  background: #fff;
+  padding: 2.5rem 2.5rem;
+  border-radius: 16px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+  min-height: 400px;
+
+  .btn-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #999;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: #b71c1c;
+      background-color: #f5f5f5;
+      transform: scale(1.1);
+    }
+  }
+
+  .verify-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #b71c1c;
+    margin-bottom: 16px;
+  }
+
+  .verify-desc {
+    color: #555;
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .verify-email {
+    color: #333;
+    font-size: 14px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+
+  .verify-label {
+    font-size: 13px;
+    color: #333;
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-weight: 500;
+  }
+
+  .verify-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+    background-color: #fafafa;
+
+    &:focus {
+      outline: none;
+      border-color: #b71c1c;
+      background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(183, 28, 28, 0.1);
+    }
+  }
+
+  .verify-msg {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #d32f2f;
+    font-size: 13px;
+    margin: 8px 0 12px;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0 0 0 18px;
+  }
+
+  .expire-time {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #666;
+    font-weight: 500;
+    background-color: #f5f5f5;
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+  }
+
+  .verify-button-group {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+
+    button {
+      padding: 14px 24px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      min-width: 120px;
+      white-space: nowrap;
+    }
+
+    .btn-verify {
+      background-color: #b71c1c;
+      color: white;
+
+      &:hover {
+        background-color: #a01717;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(183, 28, 28, 0.3);
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .btn-resend {
+      background-color: #2196f3;
+      color: white;
+
+      &:hover {
+        background-color: #1976d2;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(33, 150, 243, 0.3);
+      }
+
+      &:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+    }
+  }
+
+  .success-msg {
+    margin-top: 16px;
+    font-size: 13px;
+    color: #2e7d32;
+    font-weight: 500;
+    background: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .verify-modal {
+    margin: 20px;
+    padding: 1.5rem 1rem;
+    max-width: calc(100vw - 40px);
+    min-height: 350px;
+
+    .verify-title {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .verify-desc {
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .verify-email {
+      font-size: 13px;
+      margin-bottom: 16px;
+    }
+
+    .verify-label {
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .verify-input {
+      padding: 10px 12px;
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .verify-msg {
+      font-size: 12px;
+      margin: 6px 0 10px;
+      padding: 6px 10px;
+    }
+
+    .expire-time {
+      margin-top: 12px;
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+
+    .verify-button-group {
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 20px;
+
+      button {
+        width: 100%;
+        padding: 12px 16px;
+        font-size: 13px;
+        min-width: auto;
+      }
+    }
+
+    .success-msg {
+      margin-top: 12px;
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .verify-modal {
+    max-width: 500px;
+    min-height: 450px;
+    padding: 2rem 2rem;
+
+    .verify-button-group {
+      gap: 20px;
+
+      button {
+        padding: 16px 28px;
+        font-size: 15px;
+        min-width: 140px;
+      }
+    }
+  }
+}

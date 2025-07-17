@@ -1,0 +1,147 @@
+$primary: #2563eb;
+$cancel: #6b7280;
+$danger: #ef4444;
+$text: #374151;
+$border: #d1d5db;
+$header-bg: #e3edfd;
+$modal-bg: #fff;
+$backdrop-bg: rgba(0, 0, 0, 0.5);
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: $backdrop-bg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: $modal-bg;
+  border-radius: 12px;
+  width: 420px;
+  max-width: 95%;
+  max-height: 90vh; 
+  overflow-y: auto; 
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  background: $header-bg;
+  padding: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid $border;
+
+  h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    color: $primary;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  button {
+    background: none;
+    border: none;
+    font-size: 1.125rem;
+    color: $text;
+    cursor: pointer;
+  }
+}
+
+.form {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &-field {
+    display: flex;
+    flex-direction: column;
+
+    .form-label {
+      font-size: 0.9rem;
+      color: $text;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-icon {
+      color: $primary;
+    }
+
+    .form-input {
+      margin-top: 0.25rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.9rem;
+      border: 1px solid $border;
+      border-radius: 6px;
+      outline: none;
+
+      &:focus {
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.2);
+      }
+    }
+
+    .form-error {
+      margin-top: 0.25rem;
+      font-size: 0.75rem;
+      color: $danger;
+    }
+  }
+
+  &-global-error {
+    color: $danger;
+    font-size: 0.85rem;
+    margin-top: -0.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+  }
+
+  &-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      border-radius: 6px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+
+      &.save {
+        background: $primary;
+        color: white;
+
+        &:hover {
+          filter: brightness(0.95);
+        }
+      }
+
+      &.cancel {
+        background: $cancel;
+        color: white;
+
+        &:hover {
+          filter: brightness(0.95);
+        }
+      }
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+    }
+  }
+}

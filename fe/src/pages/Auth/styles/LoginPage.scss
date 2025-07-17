@@ -1,0 +1,47 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Roboto', sans-serif;
+  background-color: #fff4ec;
+  overflow: auto; 
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff4ec;
+  overflow: hidden;
+  margin-top: 40px;
+  
+}
+
+.btn-back-home {
+  background: #fff6f0;
+  color: #b71c1c;
+  border: 1.5px solid #b71c1c;
+  border-radius: 22px;
+  padding: 10px 28px;
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(183,28,28,0.06);
+  transition: all 0.18s;
+  letter-spacing: 0.5px;
+  display: block;
+
+  &:hover {
+    background: #b71c1c;
+    color: #fff;
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 6px 18px rgba(183,28,28,0.13);
+  }
+}
+

@@ -1,0 +1,1156 @@
+body {
+  background-color: #fefbee;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.25;
+  color: #000000;
+  margin: 0;
+  padding: 0;
+}
+
+.title-showtime {
+  color: #b71c1c;
+  font-size: 20px;
+  font-weight: 900;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  user-select: text;
+  text-shadow: 1px 1px 3px rgba(183, 28, 28, 0.3);
+}
+
+.top-border,
+.bottom-border {
+  width: 100%;
+  background-color: #d91c0f;
+  border-style: dotted;
+  border-color: white;
+  border-width: 2px 0 0 0;
+  height: 8px;
+  box-sizing: border-box;
+}
+
+.bottom-border {
+  border-width: 0 0 2px 0;
+}
+
+header {
+  width: 100%;
+  background-color: #fefbee;
+  border-top: 2px dotted #d91c0f;
+  border-bottom: 2px dotted #d91c0f;
+  box-sizing: border-box;
+}
+
+.header-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  height: 70px;
+  width: auto;
+}
+
+nav {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #000000;
+  display: none;
+}
+
+nav a {
+  color: #000000;
+  text-decoration: none;
+  margin-right: 24px;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+@media (min-width: 640px) {
+  nav {
+    display: flex;
+  }
+}
+
+.ticket-img {
+  height: 50px;
+  width: auto;
+}
+
+.breadcrumb {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #fff5e6; /* Subtle gold-tinted background */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+
+.breadcrumb-home {
+  color: #d91c0f; /* Red cinema accent */
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.breadcrumb-home:hover {
+  color: #b91c1c;
+  transform: scale(1.1);
+}
+
+.breadcrumb-link {
+  color: #d91c0f; /* Red cinema accent */
+  text-decoration: none;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: color 0.2s, background-color 0.2s, transform 0.2s;
+}
+
+.breadcrumb-link:hover {
+  color: #b91c1c;
+  background-color: #ffe4e1; /* Light red hover background */
+  transform: translateY(-1px);
+}
+
+.breadcrumb-active {
+  color: #000000;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #ffd700; /* Gold accent for active step */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumb-separator {
+  color: #666666;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb-separator i {
+  margin: 0 2px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+}
+
+.user-name {
+  color: #000000;
+  font-weight: 600;
+}
+
+.login-btn {
+  color: #d91c0f;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login-btn:hover {
+  color: #b91c1c;
+  text-decoration: underline;
+}
+
+.logout-btn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  background-color: #ff4d4f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.logout-btn:hover {
+  background-color: #d91c0f;
+}
+
+main {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 16px 40px;
+}
+
+.header-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-main h1 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.movie-search-compact {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.movie-search-input-compact {
+  width: 180px;
+  height: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 16px;
+  padding: 6px 32px 6px 12px;
+  font-size: 12px;
+  font-family: Arial, sans-serif;
+  outline: none;
+  transition: all 0.2s ease;
+  background: #ffffff;
+}
+
+.movie-search-input-compact:focus {
+  border-color: #d91c0f;
+  box-shadow: 0 0 0 2px rgba(217, 28, 15, 0.1);
+  width: 200px;
+}
+
+.movie-search-input-compact::placeholder {
+  color: #9ca3af;
+  font-style: italic;
+  font-size: 11px;
+}
+
+.search-icon {
+  position: absolute;
+  right: 10px;
+  color: #9ca3af;
+  font-size: 12px;
+  pointer-events: none;
+  transition: color 0.2s ease;
+}
+
+.movie-search-input-compact:focus + .search-icon {
+  color: #d91c0f;
+}
+
+.header-main a {
+  font-size: 13px;
+  font-weight: 400;
+  color: #666666;
+  text-decoration: none;
+}
+
+.header-main a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .header-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  
+  .movie-search-input-compact {
+    width: 140px;
+  }
+  
+  .movie-search-input-compact:focus {
+    width: 160px;
+  }
+}
+
+hr {
+  border: 1px solid black;
+  margin-bottom: 24px;
+  border-style: solid none none none;
+}
+
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) {
+  .movies-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.movie {
+  font-size: 11px;
+}
+
+.movie img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.movie h3 {
+  margin-top: 8px;
+  font-weight: 800;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.1;
+}
+
+.movie p {
+  margin: 4px 0 0 0;
+  font-weight: 700;
+}
+
+.movie p span {
+  font-weight: 400;
+}
+
+.movie .btns {
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* Kiểu cho ShowtimeSelection */
+.date-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  padding: 8px 0;
+  user-select: none;
+}
+
+.date-button {
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  border: none;
+}
+
+.dates {
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.dates::-webkit-scrollbar {
+  display: none;
+}
+
+.date-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  width: 56px;
+  background-color: white;
+  flex-shrink: 0;
+  padding: 2px 0;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.date-item:hover {
+  background-color: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+.date-item.selected {
+  background-color: #e5e7eb;
+  border-color: #374151;
+}
+
+.date-day,
+.date-weekday {
+  font-size: 9px;
+  color: #4b5563;
+  line-height: 1;
+  padding-top: 2px;
+  user-select: none;
+}
+
+.date-number {
+  font-size: 18px;
+  font-weight: 600;
+  color: #374151;
+  padding-bottom: 4px;
+  user-select: none;
+}
+
+.movie-section {
+  margin-top: 24px;
+  border-bottom: 1px solid black;
+  padding-bottom: 16px;
+}
+
+.movie-title {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.showtimes-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 13px;
+  min-width: 0;
+  flex: 1;
+}
+
+.showtime-group {
+  min-width: 0;
+}
+
+.showtime-label {
+  font-weight: 700;
+  margin-bottom: 6px;
+  white-space: nowrap;
+  color: #000000;
+}
+
+.showtimes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.showtime {
+  border: 1px solid #d1d5db;
+  border-radius: 4px;
+  padding: 2px 8px;
+  user-select: none;
+  white-space: nowrap;
+  font-size: 12px;
+  background-color: white;
+  color: #374151;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.showtime:hover {
+  background-color: #e5e7eb;
+  border-color: #9ca3af;
+}
+
+/* Responsive cho ShowtimeSelection */
+@media (max-width: 640px) {
+  .showtimes-container {
+    width: 100%;
+  }
+}
+
+/* Kiểu cho SeatSelection */
+.screen {
+  color: white;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  margin-bottom: 32px;
+  border-radius: 4px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 25px;
+}
+
+.seat-grid {
+  max-width: 720px;
+  margin: 0 auto;
+  width: 100%;
+  display: grid;
+  justify-content: center;
+}
+
+.seat-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.seat {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 4px;
+  border: 1px solid;
+  user-select: none;
+  transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.seat:hover {
+  transform: scale(1.1);
+}
+
+/* Màu sắc cho các loại ghế */
+.seat.bg-blue-500 {
+  background-color: #3b82f6;
+  border-color: #1d4ed8;
+  color: white;
+}
+
+.seat.bg-green-500 {
+  background-color: #328d19;
+  border-color: #3a5315;
+  color: white;
+}
+
+.seat.bg-pink-500 {
+  background-color: #db6c11;
+  border-color: #854d00;
+  color: white;
+}
+
+.seat.bg-gray-600 {
+  background-color: #e5e7eb;
+  border-color: #d1d5db;
+  color: #4b5563;
+}
+
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.legend-color {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: white;
+}
+
+.legend-color.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.legend-color.bg-green-500 {
+  background-color: #328d19;
+}
+
+.legend-color.bg-pink-500 {
+  background-color: #db6c11;
+}
+
+.legend-color.bg-gray-600 {
+  background-color: #e5e7eb;
+  color: #4b5563;
+}
+
+/* Nút */
+.btn-like {
+  background-color: #3b5998;
+  color: white;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-ticket {
+  background-color: #d91c0f;
+  color: white;
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.btn-ticket i {
+  font-size: 12px;
+}
+
+.btn-ticket:disabled {
+  background-color: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.btn-ticket:hover:not(:disabled) {
+  background-color: #b91c1c;
+}
+
+.btns.justify-center {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.ticket-container {
+  background: linear-gradient(135deg, #ffffff 70%, #f5f5f5 100%);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.ticket-container::before,
+.ticket-container::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: #f5f5f5;
+  border-radius: 50%;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.ticket-container::before {
+  top: 50%;
+  left: -10px;
+  transform: translateY(-50%);
+}
+
+.ticket-container::after {
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%);
+}
+
+.ticket-content {
+  border-left: 2px dashed #ccc;
+  border-right: 2px dashed #ccc;
+  padding: 1.5rem;
+}
+
+.clip-path-custom {
+  clip-path: polygon(0 0, 100% 0, 100% 70%, 50% 100%, 0 70%);
+  position: relative;
+  z-index: 10;
+  background: black;
+}
+
+.clip-path-custom::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), transparent);
+  z-index: -1;
+}
+
+.dashed-line {
+  border-top: 2px dashed #a0a0a0; /* Gray dashed line to match the image */
+  height: 0;
+  width: 100%;
+  position: relative;
+  top: -8px; /* Adjust to align with the text above */
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out forwards;
+}
+
+/* Toast Notification Styles */
+.toast-notification {
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  z-index: 1000;
+  animation: slide-in 0.3s ease-out forwards;
+}
+
+.toast-content {
+  background-color: #2a2a2a; /* Dark cinema background */
+  color: #ffffff;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 2px solid #d91c0f; /* Red cinema accent */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  font-family: Arial, sans-serif;
+}
+
+.toast-icon {
+  color: #ffd700; /* Gold accent for warning */
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.toast-message {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.toast-close {
+  margin-left: auto;
+  color: #ffd700; /* Gold accent */
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.toast-close:hover {
+  color: #d91c0f; /* Red on hover */
+}
+
+
+/* Existing styles from previous response */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #00B14F;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.btn-ticket:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.btn-ticket {
+  background-color: #00B14F;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-ticket:hover:not(:disabled) {
+  background-color: #009f45;
+}
+
+/* New styles for page transitions */
+.page-transition {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ensure main content containers have relative positioning for proper layout */
+main, .max-w-3xl {
+  position: relative;
+}
+
+/* Enhance toast notification for consistency */
+.toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 100;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* Ensure consistent button styling across components */
+button {
+  transition: all 0.3s ease;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Style cho Ant Design Movie Card */
+.movie-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #f0f0f0;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(217, 28, 15, 0.15);
+  border-color: #d91c0f;
+}
+
+.movie-card .ant-card-cover {
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+}
+
+.movie-card .ant-card-body {
+  background: linear-gradient(135deg, #ffffff 0%, #fefbee 100%);
+}
+
+.movie-card .ant-card-actions {
+  background: transparent;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Responsive cho movie cards */
+@media (max-width: 640px) {
+  .movie-card {
+    margin-bottom: 16px;
+  }
+  
+  .movie-card .ant-card-body {
+    padding: 16px;
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .movie-card .ant-card-body {
+    padding: 18px;
+  }
+}
+
+/* Loading, Error, Empty Containers */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  animation: slideInFromTop 0.5s ease-out;
+}
+
+.empty-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Movie Row Animation */
+.movies-row {
+  animation: fadeIn 0.3s ease-in;
+}
+
+/* Movie Card Wrapper Animations */
+.movie-card-wrapper {
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+.movie-card-wrapper.fade-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.movie-card-wrapper.fade-out {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* Enhanced Movie Card Hover Effects */
+.movie-card {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid #f0f0f0;
+  position: relative;
+}
+
+.movie-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(217, 28, 15, 0.05) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 12px 32px rgba(217, 28, 15, 0.2);
+  border-color: #d91c0f;
+}
+
+.movie-card:hover::before {
+  opacity: 1;
+}
+
+.movie-card .ant-card-cover {
+  border-radius: 12px 12px 0 0;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.movie-card:hover .ant-card-cover {
+  transform: scale(1.05);
+}
+
+.movie-card .ant-card-body {
+  background: linear-gradient(135deg, #ffffff 0%, #fefbee 100%);
+  position: relative;
+  z-index: 2;
+}
+
+.movie-card .ant-card-actions {
+  background: transparent;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Button Hover Effects */
+.movie-card .ant-btn-primary {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-card .ant-btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.movie-card .ant-btn-primary:hover::before {
+  left: 100%;
+}
+
+.movie-card .ant-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(217, 28, 15, 0.3);
+}
+
+/* Tag Animations */
+.movie-card .ant-tag {
+  transition: all 0.3s ease;
+  animation: tagPulse 2s infinite;
+}
+
+@keyframes tagPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Search Input Animation */
+.movie-search-input-compact:focus {
+  border-color: #d91c0f;
+  box-shadow: 0 0 0 3px rgba(217, 28, 15, 0.1);
+  transform: scale(1.02);
+}
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Loading spinner customization */
+.ant-spin-dot-item {
+  background-color: #d91c0f !important;
+}

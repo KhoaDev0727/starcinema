@@ -1,0 +1,128 @@
+.theater-admin-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  .theater-admin-title {
+    margin-bottom: 24px;
+    color: #1890ff;
+    text-align: center;
+  }
+
+  .theater-admin-search {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+    align-items: center;
+
+    .search-input {
+      flex: 1;
+      max-width: 400px;
+    }
+
+    .add-theater-button {
+      white-space: nowrap;
+    }
+  }
+
+  .theater-table {
+    margin-bottom: 24px;
+    
+    .ant-table-thead > tr > th {
+      background-color: #fafafa;
+      font-weight: 600;
+    }
+
+    .action-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      align-items: center;
+      justify-content: center;
+
+      .action-button {
+        padding: 4px 8px;
+        border-radius: 4px;
+        
+        &:hover {
+          background-color: #f0f0f0;
+        }
+      }
+    }
+  }
+
+  .scroll-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 1000;
+
+    .scroll-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: none;
+      background-color: #1890ff;
+      color: white;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+      &:hover {
+        background-color: #40a9ff;
+      }
+    }
+  }
+
+  .error-message {
+    color: #ff4d4f;
+    text-align: center;
+    margin: 16px 0;
+    padding: 12px;
+    background-color: #fff2f0;
+    border: 1px solid #ffccc7;
+    border-radius: 6px;
+  }
+
+  .success-message {
+    color: #52c41a;
+    text-align: center;
+    margin: 16px 0;
+    padding: 12px;
+    background-color: #f6ffed;
+    border: 1px solid #b7eb8f;
+    border-radius: 6px;
+  }
+
+  .modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    padding: 16px;
+
+    .theater-admin-search {
+      flex-direction: column;
+      align-items: stretch;
+
+      .search-input {
+        max-width: none;
+      }
+    }
+
+    .scroll-buttons {
+      right: 16px;
+      bottom: 16px;
+    }
+  }
+}

@@ -1,0 +1,506 @@
+// Variables for consistent theming
+$primary-color: #2563eb;
+$secondary-color: #f3f4f6;
+$text-color: #1f2937;
+$border-color: #d1d5db;
+$error-color: #dc2626;
+$success-color: #10b981; // Màu xanh lá cho thông báo thành công
+$hover-color: #1d4ed8;
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;
+$transition: all 0.2s ease-in-out;
+
+// Page container to allow full page scrolling
+.movies-admin-page-container {
+  min-height: 100vh;
+  /* overflow: auto; */ // Đã tắt để không còn thanh cuộn toàn trang
+  position: relative;
+}
+
+// Success message
+.success-message {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: $success-color;
+  color: #fff;
+  padding: 1rem 2rem;
+  border-radius: $border-radius;
+  box-shadow: $shadow-md;
+  z-index: 1001;
+  animation: fadeInOut 3s ease-in-out forwards;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+// Component container
+.movies-admin-container {
+
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+  border-radius: $border-radius;
+  box-shadow: $shadow-md;
+  font-family: 'Inter', sans-serif;
+}
+
+// Title
+.movies-admin-title {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: $text-color;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+// Search and filter section
+.movies-admin-search .filter-button{
+  margin-top: 20px;
+}
+.movies-admin-search {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+
+  .search-input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    background-color: $secondary-color;
+    transition: $transition;
+    color: black;
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+      box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+    }
+
+    &::placeholder {
+      color: #9ca3af;
+    }
+  }
+
+  .filter-container {
+    position: relative;
+
+    .filter-button {
+      padding: 0.75rem;
+      background-color: $primary-color;
+      color: #fff;
+      border-radius: $border-radius;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: $transition;
+
+      &:hover {
+        background-color: $hover-color;
+      }
+
+      svg {
+        font-size: 1.25rem;
+      }
+    }
+
+    .filter-dropdown {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      right: 0;
+      background-color: #fff;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      box-shadow: $shadow-md;
+      width: 200px;
+      z-index: 10;
+
+      .filter-option {
+        padding: 0.75rem 1rem;
+        font-size: 0.95rem;
+        color: $text-color;
+        cursor: pointer;
+        transition: $transition;
+
+        &:hover {
+          background-color: $secondary-color;
+        }
+
+        &.selected {
+          background-color: $primary-color;
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .add-button {
+    padding: 0.75rem 1.5rem;
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+// Loading and error states
+.movies-admin-container {
+  p {
+    text-align: center;
+    font-size: 1rem;
+    color: $text-color;
+  }
+
+  .error-message {
+    color: $error-color;
+    font-weight: 500;
+  }
+}
+
+// Movies table
+.movies-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+
+  thead {
+    background-color: $secondary-color;
+
+    th {
+      padding: 1rem;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: $text-color;
+      text-align: left;
+      border-bottom: 2px solid $border-color;
+    }
+  }
+
+  tbody {
+    tr {
+      transition: $transition;
+
+      &:hover {
+        background-color: $secondary-color;
+      }
+
+      td {
+        padding: 1rem;
+        font-size: 0.95rem;
+        color: $text-color;
+        border-bottom: 1px solid $border-color;
+
+        .movie-poster {
+          width: 60px;
+          height: 90px;
+          object-fit: cover;
+          border-radius: 4px;
+          box-shadow: $shadow-sm;
+        }
+
+        &.action-buttons {
+          display: flex;
+          gap: 0.5rem;
+          border-bottom: none;
+          margin-top: 24px;
+          
+
+          .edit-button,
+          .delete-button {
+            padding: 0.5rem;
+            background-color: transparent;
+            border: 1px solid $border-color;
+            border-radius: $border-radius;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: $transition;
+
+            &:hover {
+              background-color: $primary-color;
+              color: #fff;
+              border-color: $primary-color;
+            }
+          }
+
+          .delete-button:hover {
+            background-color: $error-color;
+            border-color: $error-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Pagination controls
+.pagination-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-bottom: 2rem;
+
+  button {
+    padding: 0.5rem 1rem;
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+
+    &:disabled {
+      background-color: #9ca3af;
+      cursor: not-allowed;
+    }
+  }
+
+  .page-numbers {
+    display: flex;
+    gap: 0.5rem;
+
+    .page-number {
+      padding: 0.5rem 1rem;
+      background-color: $secondary-color;
+      color: $text-color;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      cursor: pointer;
+      transition: $transition;
+
+      &.active {
+        background-color: $primary-color;
+        color: #fff;
+        border-color: $primary-color;
+      }
+
+      &:hover {
+        background-color: $hover-color;
+        color: #fff;
+        border-color: $hover-color;
+      }
+    }
+  }
+}
+
+// Scroll buttons
+.scroll-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 1000;
+
+  .scroll-up,
+  .scroll-down {
+    width: 40px;
+    height: 40px;
+    background-color: $primary-color;
+    color: #fff;
+    border: none;
+    border-radius: $border-radius;
+    cursor: pointer;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: $shadow-sm;
+    transition: $transition;
+
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+}
+
+// Modal overlay and modal styles
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: $border-radius;
+  max-width: 700px;
+  width: 95%;
+  margin: 0 auto;
+  box-shadow: $shadow-md;
+  position: relative;
+
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: $text-color;
+    margin-bottom: 1.5rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+
+    label {
+      font-size: 1rem;
+      color: $text-color;
+      font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+      padding: 1rem;
+      font-size: 1rem;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      background-color: $secondary-color;
+      transition: $transition;
+
+      &:focus {
+        outline: none;
+        border-color: $primary-color;
+        box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+      }
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+      gap: 1rem;
+      margin-top: 1.5rem;
+
+
+      button {
+        padding: 1rem 2rem;
+        border-radius: $border-radius;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: $transition;
+
+        &.submit-button {
+          background-color: $primary-color;
+          color: #fff;
+          border: none;
+
+          &:hover {
+            background-color: $hover-color;
+          }
+        }
+
+        &.cancel-button {
+          background-color: transparent;
+          color: $text-color;
+          border: 1px solid $border-color;
+
+          &:hover {
+            background-color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .movies-admin-container {
+    padding: 1rem;
+  }
+
+  .movies-admin-search {
+    flex-direction: column;
+    align-items: stretch;
+
+    .search-input,
+    .filter-container,
+    .add-button {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  .movies-table {
+    font-size: 0.85rem;
+
+    th,
+    td {
+      padding: 0.5rem;
+    }
+
+    .movie-poster {
+      width: 40px;
+      height: 60px;
+    }
+  }
+
+  .pagination-controls {
+    flex-direction: column;
+    gap: 0.5rem;
+
+    .page-numbers {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  .scroll-buttons {
+    bottom: 10px;
+    right: 10px;
+
+    .scroll-up,
+    .scroll-down {
+      width: 30px;
+      height: 30px;
+      font-size: 1rem;
+    }
+  }
+
+  .modal {
+    width: 100%;
+    padding: 1.5rem;
+
+    .modal-content {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+}

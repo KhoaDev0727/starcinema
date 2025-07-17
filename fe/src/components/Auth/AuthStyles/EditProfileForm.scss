@@ -1,0 +1,129 @@
+.edit-profile-form {
+  margin: 0;
+  padding: 0;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
+  /* max-width: none; */
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #b71c1c;
+    font-size: 2rem;
+  }
+
+  .form-row {
+    display: flex;
+    gap: 16px;
+
+    > .ant-form-item {
+      flex: 1;
+    }
+  }
+
+  .ant-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-actions-wrapper {
+    position: relative;
+    margin-top: 6px;
+
+    .inline-message {
+      position: absolute;
+      top: -16px;
+      left: 0;
+      font-size: 14px;
+      font-weight: 500;
+
+      &.success,
+      &.error {
+        color: #2e7d32; // dùng màu thành công cho cả success và error
+      }
+    }
+
+    .ant-form-item {
+      margin-top: 10px;
+      margin-bottom: 0;
+    }
+  }
+
+  .ant-form-item-label > label {
+    font-weight: 600;
+  }
+
+  .ant-btn-primary {
+    background-color: #b71c1c;
+    border-color: #b71c1c;
+
+    &:hover,
+    &:focus {
+      background-color: #9f1a1a;
+      border-color: #9f1a1a;
+    }
+  }
+
+  .field-error {
+    color: #c62828;
+    font-size: 13px;
+    margin-top: 4px;
+    padding-left: 2px;
+  }
+}
+
+.edit-profile-form-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+  background: linear-gradient(to right, #f9f9f9, #f1f1f1);
+}
+
+.edit-profile-card {
+  max-width: 320px;
+  width: 100%;
+  margin: 32px auto 0 auto;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  border-radius: 14px;
+  background: #fff;
+  padding: 18px 20px 12px 20px;
+}
+
+.edit-profile-card .ant-card-head {
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  background-color: #fdfdfd;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 10px 0;
+}
+
+.edit-profile-card .ant-form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.edit-profile-card .form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.edit-profile-card .form-row > .ant-form-item {
+  flex: 1;
+}
+
+@media (max-width: 900px) {
+  .edit-profile-card {
+    padding: 16px 8px;
+  }
+  .edit-profile-card .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}

@@ -1,0 +1,216 @@
+
+.movies-admin-title {
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+
+/* Các phần tìm kiếm và thêm mới */
+.movies-admin-search {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.search-input {
+  padding: 8px;
+  font-size: 14px;
+  width: 250px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.add-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  background-color: #45a049;
+}
+
+/* Bảng khuyến mãi */
+.promotion-table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
+.promotion-table {
+  width: 100%;
+  border-collapse: collapse; /* Loại bỏ khoảng cách giữa các ô trong bảng */
+  table-layout: fixed; /* Đảm bảo các cột có chiều rộng cố định */
+}
+
+.promotion-table th, .promotion-table td {
+  padding: 10px 15px; /* Điều chỉnh khoảng cách giữa các ô */
+  text-align: center;
+  border: 1px solid #ddd;
+}
+
+/* Cột # sẽ có chiều rộng nhỏ hơn */
+.promotion-table th:nth-child(1), 
+.promotion-table td:nth-child(1) {
+  width: 5%; /* Giảm chiều rộng của cột # */
+}
+
+/* Cột Title sẽ có chiều rộng lớn hơn */
+.promotion-table th:nth-child(2), 
+.promotion-table td:nth-child(2) {
+  width: 40%; /* Tăng chiều rộng của cột Title */
+}
+
+.promotion-table th {
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.promotion-table td {
+  font-size: 14px;
+}
+
+.promotion-table td .promotion-title {
+  cursor: pointer;
+  color: #007bff; /* Làm cho Title giống liên kết */
+}
+
+.promotion-table td .promotion-title:hover {
+  text-decoration: underline;
+}
+
+.promotion-table td .action-buttons button {
+  margin: 0 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.promotion-table td .action-buttons button.edit {
+  color: #000; /* Màu bút màu đen */
+}
+
+.promotion-table td .action-buttons button.delete {
+  color: #000; /* Màu thùng rác màu đen */
+}
+
+.promotion-table td .action-buttons button:hover {
+  background-color: #ddd;
+}
+
+.promotion-table td .action-buttons button.edit:hover {
+  color: #333; /* Đổi màu khi hover */
+}
+
+.promotion-table td .action-buttons button.delete:hover {
+  color: #333; /* Đổi màu khi hover */
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #45a049;
+}
+
+/* Đảm bảo ảnh có kích thước phù hợp trong modal */
+.modal img {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  align-items: center;
+}
+
+.pagination-controls button {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  transition: background-color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #ddd;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 16px;
+  margin: 0 10px;
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.pagination button:hover {
+  background-color: #ddd;
+}
+
+.error-message {
+  color: red;
+  margin-top: 10px;
+  text-align: center;
+}
