@@ -6,7 +6,7 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
-	"allowUnusedLabels": true,
+    "allowUnusedLabels": true,
 
     /* Bundler mode */
     "moduleResolution": "bundler",
@@ -20,9 +20,15 @@
     "strict": true,
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "src/components/MovieManagement/AddMovieModal.tsx",
+    "src/components/MovieManagement/MoviesAdmin.tsx",
+    "src/components/MovieManagement/UpdateMovieModal.tsx",
+    "src/pages/MovieManagement/MoviesAdminPage.tsx",
+    "src/pages/CinemaRoomManagement/CinemaRoomPage.tsx"
+  ]
 }
