@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import BookingDetails from './BookingDetails';
-import defaultPoster from "../../assets/img/avatar.png";
-import "./styles/my-bookings.css";
 import { useTranslation } from 'react-i18next';
+import { getUserBookings, getScheduleById, getMovieById } from '../../services/BookingService';
+import BookingDetails from './BookingDetails';
+import defaultPoster from '../../assets/img/avatar.png';
+import './styles/my-bookings.css';
 
 interface Booking {
   bookingId: string;
@@ -44,8 +44,6 @@ const MyBookings: React.FC = () => {
   const [bookingData, setBookingData] = useState<any>(null);
   const bookingsPerPage = 5;
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
   const statusOptions = [
     { value: 'All', label: t('accountManagement.statusOptions.All', 'All') },
     { value: 'PENDING', label: t('accountManagement.statusOptions.PENDING', 'Pending') },
@@ -60,10 +58,7 @@ const MyBookings: React.FC = () => {
     const fetchBookings = async () => {
       try {
         setLoading(true);
-        const bookingResponse = await axios.get(`${API_BASE_URL}/book/v1/bookings/user`, {
-          withCredentials: true,
-        });
-        const bookingsData: Booking[] = bookingResponse.data || [];
+        const bookingsData = await getUserBookings();
         setBookings(bookingsData);
 
         if (bookingsData.length > 0) {
@@ -71,10 +66,8 @@ const MyBookings: React.FC = () => {
           const movieIds = new Set<string>();
 
           const schedulePromises = scheduleIds.map(async (id) => {
-            const response = await axios.get(`${API_BASE_URL}/book/v1/schedule/id/${id}`, {
-              withCredentials: true,
-            });
-            return response.data as Schedule;
+            const schedule = await getScheduleById(id);
+            return schedule;
           });
 
           const schedulesData = await Promise.all(schedulePromises);
@@ -86,15 +79,13 @@ const MyBookings: React.FC = () => {
           setSchedules(schedulesMap);
 
           const moviePromises = Array.from(movieIds).map(async (id) => {
-            const response = await axios.get(`${API_BASE_URL}/book/v1/movie/${id}`, {
-              withCredentials: true,
-            });
+            const movie = await getMovieById(id);
             return {
-              ...response.data,
-              posterUrl: response.data.posterUrl
-                ? response.data.posterUrl.startsWith('http')
-                  ? response.data.posterUrl
-                  : `${API_BASE_URL}${response.data.posterUrl}`
+              ...movie,
+              posterUrl: movie.posterUrl
+                ? movie.posterUrl.startsWith('http')
+                  ? movie.posterUrl
+                  : `${API_BASE_URL}${movie.posterUrl}`
                 : defaultPoster,
             } as Movie;
           });
@@ -130,7 +121,7 @@ const MyBookings: React.FC = () => {
     };
 
     fetchBookings();
-  }, [t, API_BASE_URL]);
+  }, [t]);
 
   const filteredBookings = statusFilter === 'All'
     ? bookings

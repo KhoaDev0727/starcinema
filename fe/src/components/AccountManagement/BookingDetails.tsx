@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+import { getBookingById, getScheduleById, getMovieById, cancelBooking } from '../../services/BookingService';
 import Cookies from 'js-cookie';
 import defaultPoster from '../../assets/img/avatar.png';
 import defaultLogo from '../../assets/img/bg-logo-cinema.png';
-import "./styles/booking-details.css";
-import { useTranslation } from 'react-i18next';
-import { cancelBooking } from '../../services/BookingService';
+import './styles/booking-details.css';
 import { DeleteOutlined } from '@ant-design/icons';
+import { API_BASE_URL } from '../../constants/ApiConst';
 
 interface Booking {
   bookingId: string;
@@ -63,8 +63,6 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
   const [cancelError, setCancelError] = useState<string | null>(null);
   const [cancelSuccess, setCancelSuccess] = useState<string | null>(null);
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
-
   const userName = decodeCookieValue(Cookies.get('fullName')) || 'Anonymous Customer';
 
   useEffect(() => {
@@ -93,30 +91,21 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
           return;
         }
 
-        const bookingResponse = await axios.get(`${API_BASE_URL}/book/v1/bookings/${bookingId}`, {
-          withCredentials: true,
-        });
-        const bookingDataFetched: Booking = bookingResponse.data;
+        const bookingDataFetched = await getBookingById(bookingId);
         setBooking(bookingDataFetched);
 
-        const scheduleResponse = await axios.get(`${API_BASE_URL}/book/v1/schedule/id/${bookingDataFetched.scheduleId}`, {
-          withCredentials: true,
-        });
-        const scheduleData: Schedule = scheduleResponse.data;
+        const scheduleData = await getScheduleById(bookingDataFetched.scheduleId);
         setSchedule(scheduleData);
 
-        const movieResponse = await axios.get(`${API_BASE_URL}/book/v1/movie/${scheduleData.movieId}`, {
-          withCredentials: true,
-        });
-        const movieData: Movie = {
-          ...movieResponse.data,
-          posterUrl: movieResponse.data.posterUrl
-            ? movieResponse.data.posterUrl.startsWith('http')
-              ? movieResponse.data.posterUrl
-              : `${API_BASE_URL}${movieResponse.data.posterUrl}`
+        const movieData = await getMovieById(scheduleData.movieId);
+        setMovie({
+          ...movieData,
+          posterUrl: movieData.posterUrl
+            ? movieData.posterUrl.startsWith('http')
+              ? movieData.posterUrl
+              : `${API_BASE_URL}${movieData.posterUrl}`
             : defaultPoster,
-        };
-        setMovie(movieData);
+        });
 
         setError(null);
       } catch (err: any) {
@@ -133,7 +122,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
       setError('Invalid booking ID.');
       setLoading(false);
     }
-  }, [bookingId, bookingData, t, API_BASE_URL]);
+  }, [bookingId, bookingData, t]);
 
   if (loading) {
     return <p className="loading-text">{t('accountManagement.loadingBookingDetails', 'Loading booking details...')}</p>;
