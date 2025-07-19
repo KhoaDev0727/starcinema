@@ -147,6 +147,7 @@ public class SecurityConfig {
                                 RouteConst.BOOK_BASE + RouteConst.SCHEDULE + RouteConst.API_PARAM_ID_PATH,
                                 RouteConst.BOOK_BASE + RouteConst.SCHEDULE + "/id" + RouteConst.API_PARAM_SCHEDULE_ID_PATH,
                                 RouteConst.BOOK_BASE + RouteConst.SEAT + RouteConst.API_PARAM_SCHEDULE_ID_PATH).permitAll()
+								.requestMatchers(HttpMethod.GET, RouteConst.BOOK_BASE + RouteConst.BOOKINGS + "/user").permitAll()
                         .requestMatchers(RouteConst.AUTH_BASE + RouteConst.LOGIN, "/login", "/oauth2/**",
                                 RouteConst.AUTH_BASE + RouteConst.REGISTER + "/**",
                                 RouteConst.AUTH_BASE + RouteConst.PASSWORD + "/**", "/error", "/api/test").permitAll()
