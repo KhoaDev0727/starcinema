@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Cookies from 'js-cookie';
-// Đảm bảo import defaultPoster với kiểu string
-import defaultPoster from '../../assets/img/avatar.png'; // Kiểm tra đường dẫn
+import defaultPoster from '../../assets/img/avatar.png';
 import defaultLogo from '../../assets/img/bg-logo-cinema.png';
 import "./styles/booking-details.css";
 import { useTranslation } from 'react-i18next';
 import { cancelBooking } from '../../services/BookingService';
 import { DeleteOutlined } from '@ant-design/icons';
-
 
 interface Booking {
   bookingId: string;
@@ -65,6 +63,8 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
   const [cancelError, setCancelError] = useState<string | null>(null);
   const [cancelSuccess, setCancelSuccess] = useState<string | null>(null);
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const userName = decodeCookieValue(Cookies.get('fullName')) || 'Anonymous Customer';
 
   useEffect(() => {
@@ -73,7 +73,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
         setLoading(true);
 
         if (bookingData) {
-          console.log('Using bookingData:', bookingData);
+          console.log('Use bookingData:', bookingData);
           setBooking(bookingData.booking);
           setSchedule({
             scheduleId: bookingData.booking.scheduleId,
@@ -93,31 +93,35 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
           return;
         }
 
-        const bookingResponse = await axios.get(`/api/book/v1/bookings/${bookingId}`, {
+        const bookingResponse = await axios.get(`${API_BASE_URL}/book/v1/bookings/${bookingId}`, {
           withCredentials: true,
         });
         const bookingDataFetched: Booking = bookingResponse.data;
         setBooking(bookingDataFetched);
 
-        const scheduleResponse = await axios.get(`/api/book/v1/schedule/id/${bookingDataFetched.scheduleId}`, {
+        const scheduleResponse = await axios.get(`${API_BASE_URL}/book/v1/schedule/id/${bookingDataFetched.scheduleId}`, {
           withCredentials: true,
         });
         const scheduleData: Schedule = scheduleResponse.data;
         setSchedule(scheduleData);
 
-        const movieResponse = await axios.get(`/api/book/v1/movie/${scheduleData.movieId}`, {
+        const movieResponse = await axios.get(`${API_BASE_URL}/book/v1/movie/${scheduleData.movieId}`, {
           withCredentials: true,
         });
         const movieData: Movie = {
           ...movieResponse.data,
-          posterUrl: movieResponse.data.posterUrl ? `http://localhost:8080${movieResponse.data.posterUrl}` : defaultPoster,
+          posterUrl: movieResponse.data.posterUrl
+            ? movieResponse.data.posterUrl.startsWith('http')
+              ? movieResponse.data.posterUrl
+              : `${API_BASE_URL}${movieResponse.data.posterUrl}`
+            : defaultPoster,
         };
         setMovie(movieData);
 
         setError(null);
       } catch (err: any) {
         console.error('Error fetching booking details:', err);
-        setError(err.response?.data || 'Failed to load booking details. Please try again.');
+        setError(err.response?.data?.message || t('accountManagement.bookingDetailsNotFound', 'Booking details not found.'));
       } finally {
         setLoading(false);
       }
@@ -129,7 +133,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
       setError('Invalid booking ID.');
       setLoading(false);
     }
-  }, [bookingId, bookingData]);
+  }, [bookingId, bookingData, t, API_BASE_URL]);
 
   if (loading) {
     return <p className="loading-text">{t('accountManagement.loadingBookingDetails', 'Loading booking details...')}</p>;
@@ -144,7 +148,6 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
     ? movie.posterUrl
     : bookingData?.posterUrl || defaultPoster;
 
-  // Chỉ cho phép huỷ khi vé chưa thanh toán (PENDING) và suất chiếu còn cách ít nhất 6 tiếng
   const canCancel = booking.status === 'PENDING' && (new Date(schedule.showtime).getTime() - Date.now() > 6 * 60 * 60 * 1000);
 
   const handleCancelBooking = async () => {
@@ -156,7 +159,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
       setCancelSuccess(t('accountManagement.cancelSuccess', 'Huỷ vé thành công!'));
       setTimeout(() => {
         onClose();
-        window.location.reload(); // reload lại danh sách vé
+        window.location.reload();
       }, 1200);
     } catch (err: any) {
       let errorMsg = t('accountManagement.cancelError', 'Huỷ vé thất bại!');
@@ -218,7 +221,7 @@ const BookingDetails: React.FC<BookingDetailsProps> = ({ bookingId, bookingData,
             {canCancel && (
               <div className="cancel-btn-wrapper">
                 <button className="cancel-booking-btn" onClick={handleCancelBooking} disabled={cancelling}>
-                  <DeleteOutlined style={{marginRight:8, fontSize:18}} />
+                  <DeleteOutlined style={{ marginRight: 8, fontSize: 18 }} />
                   {cancelling ? t('accountManagement.cancelling', 'Đang huỷ...') : t('accountManagement.cancelBooking', 'Huỷ vé')}
                 </button>
               </div>

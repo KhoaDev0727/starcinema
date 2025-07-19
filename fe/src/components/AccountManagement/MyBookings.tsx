@@ -44,6 +44,8 @@ const MyBookings: React.FC = () => {
   const [bookingData, setBookingData] = useState<any>(null);
   const bookingsPerPage = 5;
 
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
   const statusOptions = [
     { value: 'All', label: t('accountManagement.statusOptions.All', 'All') },
     { value: 'PENDING', label: t('accountManagement.statusOptions.PENDING', 'Pending') },
@@ -58,19 +60,18 @@ const MyBookings: React.FC = () => {
     const fetchBookings = async () => {
       try {
         setLoading(true);
-        const bookingResponse = await axios.get(`http://localhost:8080/api/book/v1/bookings/user`, {
+        const bookingResponse = await axios.get(`${API_BASE_URL}/book/v1/bookings/user`, {
           withCredentials: true,
         });
         const bookingsData: Booking[] = bookingResponse.data || [];
         setBookings(bookingsData);
 
-        // Only fetch schedules and movies if there are bookings
         if (bookingsData.length > 0) {
           const scheduleIds = [...new Set(bookingsData.map((b) => b.scheduleId))];
           const movieIds = new Set<string>();
 
           const schedulePromises = scheduleIds.map(async (id) => {
-            const response = await axios.get(`http://localhost:8080/api/book/v1/schedule/id/${id}`, {
+            const response = await axios.get(`${API_BASE_URL}/book/v1/schedule/id/${id}`, {
               withCredentials: true,
             });
             return response.data as Schedule;
@@ -85,12 +86,16 @@ const MyBookings: React.FC = () => {
           setSchedules(schedulesMap);
 
           const moviePromises = Array.from(movieIds).map(async (id) => {
-            const response = await axios.get(`http://localhost:8080/api/book/v1/movie/${id}`, {
+            const response = await axios.get(`${API_BASE_URL}/book/v1/movie/${id}`, {
               withCredentials: true,
             });
             return {
               ...response.data,
-              posterUrl: response.data.posterUrl ? `http://localhost:8080${response.data.posterUrl}` : defaultPoster,
+              posterUrl: response.data.posterUrl
+                ? response.data.posterUrl.startsWith('http')
+                  ? response.data.posterUrl
+                  : `${API_BASE_URL}${response.data.posterUrl}`
+                : defaultPoster,
             } as Movie;
           });
 
@@ -105,22 +110,18 @@ const MyBookings: React.FC = () => {
         setError(null);
       } catch (err: any) {
         console.error('Error fetching bookings:', err);
-        
-        // Check if the error is "No bookings found" - this should be treated as no bookings, not an error
         const errorMessage = err.response?.data?.originMessage || err.response?.data?.message || err.message;
         const isNoBookingsError = errorMessage && (
-          errorMessage.includes('No bookings found') || 
+          errorMessage.includes('No bookings found') ||
           errorMessage.includes('No bookings found for userId')
         );
-        
+
         if (isNoBookingsError) {
-          // This is not really an error, just no bookings found
           setBookings([]);
           setSchedules({});
           setMovies({});
           setError(null);
         } else {
-          // This is a real error
           setError(err.response?.data?.message || t('accountManagement.loadError', 'Failed to load bookings. Please try again.'));
         }
       } finally {
@@ -129,7 +130,7 @@ const MyBookings: React.FC = () => {
     };
 
     fetchBookings();
-  }, []);
+  }, [t, API_BASE_URL]);
 
   const filteredBookings = statusFilter === 'All'
     ? bookings

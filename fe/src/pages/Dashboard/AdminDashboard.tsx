@@ -55,6 +55,7 @@ const AdminDashboard: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { t, i18n } = useTranslation();
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   // Map URL path to menu key
   const pathToKey: { [key: string]: string } = {
@@ -106,15 +107,17 @@ const AdminDashboard: React.FC = () => {
   }, [isLogoutOpen]);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/admin/statistics")
+    axios.get(`${API_BASE_URL}/admin/statistics`, {
+      withCredentials: true,
+    })
       .then(res => setStatistics(res.data))
       .catch(err => console.error("Error fetching statistics:", err));
-  }, []);
+  }, [API_BASE_URL]);
 
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:8080/api/login/logout",
+        `${API_BASE_URL}/login/logout`,
         {},
         {
           withCredentials: true,
@@ -190,7 +193,6 @@ const AdminDashboard: React.FC = () => {
           {selectedKey === "dashboard" ? (
             <>
               <Title level={2} style={{ marginBottom: 32 }}>{t('adminDashboard.welcome')}</Title>
-              {/* Sử dụng Ant Design Card + Row/Col */}
               <Row gutter={[24, 24]} style={{ marginBottom: 32 }}>
                 <Col xs={24} sm={12} md={8} lg={6} xl={6}>
                   <Card bordered hoverable>
@@ -249,7 +251,6 @@ const AdminDashboard: React.FC = () => {
                   </Card>
                 </Col>
               </Row>
-              {/* Đã xóa hình banner */}
             </>
           ) : (
             <Outlet />
