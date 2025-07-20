@@ -41,13 +41,18 @@ Easily find trending, now showing, or upcoming movies with a smart search system
 
 ---
 
-## 📸 Screenshots
+## 📸 UI Preview
 
-> *Add UI mockups or actual feature screens here.*
+Below are sample screens demonstrating the core user journey from selecting showtime to completing checkout:
 
-![image](docs/image/uishowtime.png)
-![image](docs/image/uiseat.png)
-![image](docs/image/uicheckout.png)
+- 🎞️ **Select Showtime**  
+  <img src="docs/image/uishowtime.png" alt="Select Showtime UI" width="600"/>
+
+- 💺 **Choose Your Seat**  
+  <img src="docs/image/uiseat.png" alt="Seat Selection UI" width="600"/>
+
+- 💳 **Checkout & Confirmation**  
+  <img src="docs/image/uicheckout.png" alt="Checkout UI" width="600"/>
 
 ---
 
