@@ -73,4 +73,3 @@ export const getBookingById = async (bookingId: string): Promise<BookingResponse
   const response = await axiosInstance.get(`/api/book/v1/bookings/${bookingId}`);
   return response.data;
 };
-

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getUserBookings, getScheduleById, getMovieById } from '../../services/BookingService';
 import BookingDetails from './BookingDetails';
+import { API_BASE_URL } from '../../constants/ApiConst';
 import defaultPoster from '../../assets/img/avatar.png';
 import './styles/my-bookings.css';
 
