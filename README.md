@@ -57,14 +57,14 @@ Below are sample screens demonstrating the core user journey from selecting show
 ---
 
 ## 📁 Project Structure
-
+```bash
 starcinema/
 ├── be/
-│ └── MovieTheater/ # Spring Boot backend
+│    └── MovieTheater/ # Spring Boot backend
 ├── fe/ # React frontend
 ├── docs/ # Documentation and resources
 └── README.md
-
+```
 ---
 
 ## 🛠️ How to Run the Project Locally
