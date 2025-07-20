@@ -1,4 +1,4 @@
-export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080';
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://starcinema.online/api';
 export const LOGIN_ENDPOINT = '/api/login';
 export const REGISTER_ENDPOINT = '/api/register';
 export const VERIFY_REGISTER_CODE_ENDPOINT = '/api/register/verify-code';
