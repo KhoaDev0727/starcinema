@@ -65,12 +65,12 @@ export const cancelBooking = async (bookingId: string): Promise<any> => {
 }; 
 
 export const getUserBookings = async (): Promise<BookingResponseDTO[]> => {
-  const response = await axiosInstance.get('/book/v1/bookings/user');
+  const response = await axiosInstance.get('/api/book/v1/bookings/user');
   return response.data;
 };
 
 export const getBookingById = async (bookingId: string): Promise<BookingResponseDTO> => {
-  const response = await axiosInstance.get(`/book/v1/bookings/${bookingId}`);
+  const response = await axiosInstance.get(`/api/book/v1/bookings/${bookingId}`);
   return response.data;
 };
 
